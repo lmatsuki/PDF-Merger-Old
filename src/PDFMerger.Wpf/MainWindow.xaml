@@ -3,38 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PDFMerger.Wpf"
+        xmlns:local="clr-namespace:PDFMerger.Wpf.Modules"
         mc:Ignorable="d"
         Title="PDF Merger" Height="350" Width="650">
     <Grid>
         <DockPanel>
-            <ToolBarTray DockPanel.Dock="Top">
-                <ToolBar>
-                    <Button Command="Cut" ToolTip="Cut selection to Windows Clipboard.">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Width="24" Source="Images/add_file.png" />
-                            <TextBlock VerticalAlignment="Center">Add file...</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Command="Copy" ToolTip="Copy selection to Windows Clipboard.">
-                        <Image Width="24" Source="Images/remove_file.png" />
-                    </Button>
-                    <Separator />
-                    <Button Command="Copy" ToolTip="Copy selection to Windows Clipboard.">
-                        <Image Width="24" Source="Images/move_up.png" />
-                    </Button>
-                    <Button Command="Copy" ToolTip="Copy selection to Windows Clipboard.">
-                        <Image Width="24" Source="Images/move_down.png" />
-                    </Button>
-                    <Button Command="Paste" ToolTip="Paste from Windows Clipboard.">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Width="24" Source="Images/bind.png" />
-                            <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Bind!</TextBlock>
-                        </StackPanel>
-                    </Button>
-                </ToolBar>
-            </ToolBarTray>
-            <TextBox AcceptsReturn="True" />
+            <local:ToolBar  />
         </DockPanel>
     </Grid>
 </Window>
