@@ -8,7 +8,9 @@
         Title="PDF Merger" Height="350" Width="650">
     <Grid>
         <DockPanel>
-            <local:ToolBar  />
+            <local:ToolBar DockPanel.Dock="Top" />
+            <local:StatusBar DockPanel.Dock="Bottom" />
+            <local:ListBox />
         </DockPanel>
     </Grid>
 </Window>

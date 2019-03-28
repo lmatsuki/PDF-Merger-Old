@@ -35,7 +35,6 @@
                     </Button>
                 </ToolBar>
             </ToolBarTray>
-            <TextBox AcceptsReturn="True" />
         </DockPanel>
     </Grid>
 </UserControl>
