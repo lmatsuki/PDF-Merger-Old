@@ -6,11 +6,14 @@
              xmlns:pdfMerger="clr-namespace:PDFMerger"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="AddFileCommand_Executed" CanExecute="AddFileCommand_CanExecute"></CommandBinding>
+    </UserControl.CommandBindings>
     <Grid>
         <DockPanel>
             <ToolBarTray DockPanel.Dock="Top">
                 <ToolBar>
-                    <Button Command="Cut" ToolTip="Add file...">
+                    <Button Command="ApplicationCommands.Open" ToolTip="Add file...">
                         <StackPanel Orientation="Horizontal">
                             <Image Width="18" Margin="0,0,5,0" Source="../Images/add_file.png" />
                             <TextBlock Text="Add file..." VerticalAlignment="Center" />

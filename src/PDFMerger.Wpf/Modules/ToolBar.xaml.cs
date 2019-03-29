@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PDFMerger.Wpf.Modules
 {
@@ -24,5 +14,24 @@ namespace PDFMerger.Wpf.Modules
         {
             InitializeComponent();
         }
+
+        #region AddFile Command
+
+        private void AddFileCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AddFileCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog().Value)
+            {
+                MessageBox.Show("Opened: " + openFileDialog.FileName);
+            }
+        }
+
+        #endregion
     }
 }
