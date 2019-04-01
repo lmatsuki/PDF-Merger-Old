@@ -24,7 +24,10 @@ namespace PDFMerger.Wpf.Modules
 
         private void AddFileCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "PDF documents (*.pdf)|*.pdf*"
+            };
 
             if (openFileDialog.ShowDialog().Value)
             {
