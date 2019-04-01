@@ -3,11 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:pdfMerger="clr-namespace:PDFMerger"
+             xmlns:pdfMerger="clr-namespace:PDFMerger.Wpf.Modules"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="AddFileCommand_Executed" CanExecute="AddFileCommand_CanExecute"></CommandBinding>
+        <CommandBinding Command="pdfMerger:CustomCommands.RemoveFile" Executed="RemoveFileCommand_Executed" CanExecute="RemoveFileCommand_CanExecute"></CommandBinding>
+        <CommandBinding Command="pdfMerger:CustomCommands.MoveUp" Executed="MoveUpCommand_Executed" CanExecute="MoveUpCommand_CanExecute"></CommandBinding>
+        <CommandBinding Command="pdfMerger:CustomCommands.MoveDown" Executed="MoveDownCommand_Executed" CanExecute="MoveDownCommand_CanExecute"></CommandBinding>
+        <CommandBinding Command="pdfMerger:CustomCommands.BindFile" Executed="BindFileCommand_Executed" CanExecute="BindFileCommand_CanExecute"></CommandBinding>
     </UserControl.CommandBindings>
     <Grid>
         <DockPanel>
@@ -19,18 +23,18 @@
                             <TextBlock Text="Add file..." VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
-                    <Button Command="Copy" ToolTip="Remove selected">
+                    <Button Command="pdfMerger:CustomCommands.RemoveFile" ToolTip="Remove selected">
                         <Image Width="20" Source="../Images/remove_file.png" />
                     </Button>
                     <Separator />
-                    <Button Command="Copy" ToolTip="Move up">
+                    <Button Command="pdfMerger:CustomCommands.MoveUp" ToolTip="Move up">
                         <Image Width="20" Margin="0,0,2,0" Source="../Images/move_up.png" />
                     </Button>
-                    <Button Command="Copy" ToolTip="Move down">
+                    <Button Command="pdfMerger:CustomCommands.MoveDown" ToolTip="Move down">
                         <Image Width="20" Margin="2,0,0,0" Source="../Images/move_down.png" />
                     </Button>
                     <Separator />
-                    <Button Command="Paste" ToolTip="Bind!">
+                    <Button Command="pdfMerger:CustomCommands.BindFile" ToolTip="Bind!">
                         <StackPanel Orientation="Horizontal">
                             <Image Width="18" Margin="0,0,3,0" Source="../Images/bind.png" />
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Bind!</TextBlock>
