@@ -50,6 +50,48 @@ namespace PDFMerger.Wpf.Modules
         }
 
         #endregion
+
+        #region MoveUp Command
+
+        private void MoveUpCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = false;
+        }
+
+        private void MoveUpCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Move up file!");
+        }
+
+        #endregion
+
+        #region MoveDown Command
+
+        private void MoveDownCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = false;
+        }
+
+        private void MoveDownCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Move down file!");
+        }
+
+        #endregion
+
+        #region BindFile Command
+
+        private void BindFileCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = false;
+        }
+
+        private void BindFileCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Bind file!");
+        }
+
+        #endregion
     }
 
     #region Custom Commands
