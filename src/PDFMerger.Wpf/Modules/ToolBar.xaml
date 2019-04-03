@@ -13,6 +13,15 @@
         <CommandBinding Command="pdfMerger:CustomCommands.MoveDown" Executed="MoveDownCommand_Executed" CanExecute="MoveDownCommand_CanExecute"></CommandBinding>
         <CommandBinding Command="pdfMerger:CustomCommands.BindFile" Executed="BindFileCommand_Executed" CanExecute="BindFileCommand_CanExecute"></CommandBinding>
     </UserControl.CommandBindings>
+    <UserControl.Resources>
+        <Style TargetType="Image">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.25" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <DockPanel>
             <ToolBarTray DockPanel.Dock="Top">
