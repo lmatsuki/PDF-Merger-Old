@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using PDFMerger.Wpf.SharedKernel;
+using PDFMerger.Wpf.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,6 +15,18 @@ namespace PDFMerger.Wpf.Modules
         public ToolBar()
         {
             InitializeComponent();
+        }
+
+        public Mediator Mediator { get; set; }
+
+        public void Notify(object message)
+        {
+            string student = message as string;
+
+            if (student != null)
+            {
+                DataContext = student;
+            }
         }
 
         #region AddFile Command
@@ -31,7 +45,12 @@ namespace PDFMerger.Wpf.Modules
 
             if (openFileDialog.ShowDialog().Value)
             {
-                MessageBox.Show("Opened: " + openFileDialog.FileName);
+                MergeFilesViewModel viewModel = DataContext as MergeFilesViewModel;
+
+                if (viewModel != null)
+                {
+                    viewModel.MergeFiles.Add(openFileDialog.FileName);
+                }
             }
         }
 
@@ -41,6 +60,20 @@ namespace PDFMerger.Wpf.Modules
 
         private void RemoveFileCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
+            MergeFilesViewModel viewModel = DataContext as MergeFilesViewModel;
+
+            if (viewModel != null)
+            {
+                var toolbarPanel = sender as FrameworkElement;
+                var dockPanel = toolbarPanel.Parent as Panel;
+                var gridPanel = dockPanel.Parent as Panel;
+                var mainWindow = gridPanel.Parent as FrameworkElement;
+
+                var child = mainWindow;
+
+                var test = false;
+                //viewModel.MergeFiles.Add(openFileDialog.FileName);
+            }
             e.CanExecute = false;
         }
 
@@ -83,12 +116,23 @@ namespace PDFMerger.Wpf.Modules
 
         private void BindFileCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = false;
+            MergeFilesViewModel viewModel = DataContext as MergeFilesViewModel;
+
+            e.CanExecute = (viewModel != null && viewModel.MergeFiles.Count > 1);
         }
 
         private void BindFileCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Bind file!");
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF documents (*.pdf)|*.pdf*"
+            };
+
+            if (saveFileDialog.ShowDialog().Value)
+            {
+                // Bind and Save file!
+
+            }
         }
 
         #endregion
@@ -98,6 +142,13 @@ namespace PDFMerger.Wpf.Modules
 
     public static class CustomCommands
     {
+        public static readonly RoutedUICommand AddFile = new RoutedUICommand
+        (
+            "AddFile",
+            "AddFile",
+            typeof(CustomCommands)
+        );
+
         public static readonly RoutedUICommand RemoveFile = new RoutedUICommand
         (
             "RemoveFile",

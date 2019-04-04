@@ -8,11 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="5">
         <DockPanel>
-            <ListBox>
-                <ListBoxItem>ListBox Item #1</ListBoxItem>
-                <ListBoxItem>ListBox Item #2</ListBoxItem>
-                <ListBoxItem>ListBox Item #3</ListBoxItem>
-            </ListBox>
+            <ListBox Name="filesToMerge" SelectionChanged="SelectionChanged" ItemsSource="{Binding Path=MergeFiles}" />
         </DockPanel>
     </Grid>
 </UserControl>
