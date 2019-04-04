@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PDFMerger.Wpf.SharedKernel;
+using PDFMerger.Wpf.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PDFMerger.Wpf
 {
@@ -22,7 +11,14 @@ namespace PDFMerger.Wpf
     {
         public MainWindow()
         {
+            DataContext = new MergeFilesViewModel();
             InitializeComponent();
+
+            Mediator = new Mediator(toolBar, listBox);
+            toolBar.Mediator = Mediator;
+            listBox.Mediator = Mediator;
         }
+
+        public Mediator Mediator { get; set; }
     }
 }
